@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CandyApple — Reviews & Free Tools Worth Knowing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <span class="apple-dot">&#8226;</span> CandyApple
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tools">Free Tools</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#top-review" class="nav-cta">This Week's Pick</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="apple-visual">
+      <div class="apple-glow"></div>
+      <svg class="apple-svg" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- stem -->
+        <path d="M138 38 C145 15, 170 10, 168 5" stroke="#4a2e0a" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- leaf -->
+        <path d="M145 30 C155 10, 185 15, 170 35 C160 45, 140 42, 145 30Z" fill="#2d7a2d"/>
+        <!-- apple body -->
+        <path d="M130 55 C80 55, 30 95, 30 160 C30 230, 75 290, 130 290 C185 290, 230 230, 230 160 C230 95, 180 55, 130 55Z" fill="url(#appleGradient)"/>
+        <!-- shine highlight -->
+        <ellipse cx="95" cy="110" rx="22" ry="38" fill="url(#shineGrad)" transform="rotate(-20 95 110)"/>
+        <!-- small secondary shine -->
+        <ellipse cx="78" cy="100" rx="8" ry="14" fill="rgba(255,255,255,0.55)" transform="rotate(-20 78 100)"/>
+        <defs>
+          <radialGradient id="appleGradient" cx="40%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#ff2020"/>
+            <stop offset="35%" stop-color="#cc0000"/>
+            <stop offset="70%" stop-color="#8b0000"/>
+            <stop offset="100%" stop-color="#4a0000"/>
+          </radialGradient>
+          <radialGradient id="shineGrad" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.75)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">The Internet's Best Kept Secrets</p>
+      <h1 class="hero-title">Candy<span class="red">Apple</span></h1>
+      <p class="hero-sub">Honest reviews. Free tools. No fluff. Just the good stuff — polished to a shine.</p>
+      <div class="hero-btns">
+        <a href="#top-review" class="btn btn-red">This Week's Review</a>
+        <a href="#tools" class="btn btn-outline">Browse Free Tools</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE TOOLS GRID -->
+  <section class="section tools-section" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Always Free</span>
+        <h2>Tools Everybody Should Know</h2>
+        <p>Bookmarked, battle-tested, and straight up useful. These are the websites we actually use.</p>
+      </div>
+      <div class="tools-grid">
+
+        <a href="https://temp-mail.org/en/" target="_blank" class="tool-card">
+          <div class="tool-icon">📬</div>
+          <div class="tool-body">
+            <h3>Temp Mail</h3>
+            <p>Burner email in one click. Get a throwaway inbox for verification codes, sign-ups, and sketchy free trials — no account needed, zero spam in your real inbox.</p>
+            <span class="tool-tag">Privacy</span>
+          </div>
+        </a>
+
+        <a href="https://www.usphonebook.com/" target="_blank" class="tool-card">
+          <div class="tool-icon">🔍</div>
+          <div class="tool-body">
+            <h3>US Phone Book</h3>
+            <p>Free reverse phone lookup and people search. Unknown number blowing up your phone? Punch it in and find out who's on the other end before you call back.</p>
+            <span class="tool-tag">Lookup</span>
+          </div>
+        </a>
+
+        <a href="https://autodraw.com/" target="_blank" class="tool-card">
+          <div class="tool-icon">✏️</div>
+          <div class="tool-body">
+            <h3>AutoDraw</h3>
+            <p>Google's AI-powered drawing tool that guesses what you're sketching and offers clean clip-art versions. Draw a hot mess, get a clean icon. It's lowkey magic.</p>
+            <span class="tool-tag">Creative</span>
+          </div>
+        </a>
+
+        <a href="https://facecheck.id/" target="_blank" class="tool-card">
+          <div class="tool-icon">👤</div>
+          <div class="tool-body">
+            <h3>FaceCheck ID</h3>
+            <p>Reverse image search by face. Upload a photo and find where that face appears across the internet. Catfish checkers, this one's for you.</p>
+            <span class="tool-tag">Search</span>
+          </div>
+        </a>
+
+        <a href="https://123apps.com" target="_blank" class="tool-card">
+          <div class="tool-icon">🎬</div>
+          <div class="tool-body">
+            <h3>123Apps</h3>
+            <p>Free video editor, audio converter, PDF tools, and more — all browser-based, no install. Swiss Army knife of web tools. You'll use this one more than you expect.</p>
+            <span class="tool-tag">Converter</span>
+          </div>
+        </a>
+
+        <a href="https://quillbot.com/" target="_blank" class="tool-card">
+          <div class="tool-icon">🤖</div>
+          <div class="tool-body">
+            <h3>QuillBot</h3>
+            <p>AI writing toolkit: paraphraser, grammar checker, summarizer, citation generator. When you need to sound smarter than you feel, QuillBot's got your back.</p>
+            <span class="tool-tag">AI Writing</span>
+          </div>
+        </a>
+
+        <a href="https://cooltext.com/Fonts" target="_blank" class="tool-card">
+          <div class="tool-icon">🔡</div>
+          <div class="tool-body">
+            <h3>Cool Text Fonts</h3>
+            <p>Hundreds of free fonts and text graphics, no account required. Great for logos, thumbnails, and making your designs stand out without paying Adobe a dime.</p>
+            <span class="tool-tag">Design</span>
+          </div>
+        </a>
+
+        <a href="https://filext.com/online-file-viewer.html" target="_blank" class="tool-card">
+          <div class="tool-icon">📄</div>
+          <div class="tool-body">
+            <h3>File Viewer</h3>
+            <p>Open basically any file format in your browser — no software needed. Got a weird .DAT or .EPS someone sent you? This'll crack it open.</p>
+            <span class="tool-tag">Utility</span>
+          </div>
+        </a>
+
+        <a href="https://www.kraken.com/convert/btc" target="_blank" class="tool-card">
+          <div class="tool-icon">₿</div>
+          <div class="tool-body">
+            <h3>Kraken Crypto Converter</h3>
+            <p>Live crypto-to-fiat conversion straight from one of the most trusted exchanges. Check what your BTC, ETH, or altcoins are worth in real dollars right now.</p>
+            <span class="tool-tag">Crypto</span>
+          </div>
+        </a>
+
+        <a href="https://home.by.me" target="_blank" class="tool-card">
+          <div class="tool-icon">🏠</div>
+          <div class="tool-body">
+            <h3>Home By Me</h3>
+            <p>Free 3D room planner. Design any room, swap furniture, visualize paint colors — before you spend a dollar on renovations. Interior designers charge a grand for this.</p>
+            <span class="tool-tag">Design</span>
+          </div>
+        </a>
+
+        <a href="https://onelook.com" target="_blank" class="tool-card">
+          <div class="tool-icon">📖</div>
+          <div class="tool-body">
+            <h3>OneLook</h3>
+            <p>The reverse dictionary. Describe a concept and it finds the word for you. Perfect for writers, crossword addicts, and anyone who's ever had a word on the tip of their tongue.</p>
+            <span class="tool-tag">Language</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP REVIEW THIS WEEK -->
+  <section class="section top-review-section" id="top-review">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag red-tag">⭐ This Week's Top Review</span>
+        <h2>Hotshot Trucking: The Big 3 Dually Showdown</h2>
+        <p>RAM 3500 vs Ford F-450 vs Chevy Silverado 3500HD — which rig actually earns its keep on the road?</p>
+      </div>
+
+      <div class="feature-review">
+        <div class="review-intro">
+          <p>Hotshot trucking isn't glamorous — it's early mornings, tight deadlines, and a whole lot of miles. Your truck is your livelihood, and picking the wrong one costs you money. We stacked up the Big 3 heavy-duty duallies side by side so you don't have to guess.</p>
+        </div>
+
+        <div class="truck-cards">
+
+          <!-- RAM 3500 -->
+          <div class="truck-card">
+            <div class="truck-img-wrap">
+              <img src="assets/ram_3500.jpg" alt="RAM 3500 Dually towing livestock trailer" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"/>
+              <div class="truck-img-placeholder">🚛 RAM 3500</div>
+            </div>
+            <div class="truck-badge badge-ram">RAM 3500 Laramie</div>
+            <div class="truck-content">
+              <div class="truck-stars">★★★★★</div>
+              <h3>RAM 3500 — The Workhorse King</h3>
+              <p class="truck-verdict">Best-in-class torque. Built for operators who need numbers, not just a name on the tailgate.</p>
+              <ul class="truck-specs">
+                <li><span>Engine</span> 6.7L Cummins Turbo Diesel</li>
+                <li><span>Max Torque</span> 1,075 lb-ft</li>
+                <li><span>GVWR</span> 14,000 lbs</li>
+                <li><span>Max Tow</span> 37,100 lbs</li>
+                <li><span>Payload</span> 7,680 lbs</li>
+              </ul>
+              <div class="pros-cons">
+                <div class="pros">
+                  <strong>Pros</strong>
+                  <ul>
+                    <li>Highest torque in class — hill climbs feel effortless</li>
+                    <li>Exceptional ride comfort with coil-spring rear</li>
+                    <li>Air suspension available for leveling under load</li>
+                    <li>Interior quality punches above its price point</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <strong>Cons</strong>
+                  <ul>
+                    <li>Slightly lower max tow rating than F-450</li>
+                    <li>DEF/emissions maintenance adds operating cost</li>
+                    <li>Cummins long-term reliability varies by mileage</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hotshot-take">
+                <strong>Hotshot Take:</strong> The RAM 3500 is the driver's choice. That Cummins torque makes loaded mountain grades feel like flat highway. If you're running livestock or heavy steel, this is your truck.
+              </div>
+            </div>
+          </div>
+
+          <!-- FORD F-450 -->
+          <div class="truck-card truck-card-featured">
+            <div class="featured-ribbon">Editor's Pick</div>
+            <div class="truck-img-wrap">
+              <img src="assets/f450.jpg" alt="Ford F-450 Super Duty Dually" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"/>
+              <div class="truck-img-placeholder">🚛 F-450</div>
+            </div>
+            <div class="truck-badge badge-ford">Ford F-450 Super Duty</div>
+            <div class="truck-content">
+              <div class="truck-stars">★★★★★</div>
+              <h3>Ford F-450 — The Maximum Load Master</h3>
+              <p class="truck-verdict">Class-leading tow and payload ratings. When the load spec says you need every pound, the F-450 delivers.</p>
+              <ul class="truck-specs">
+                <li><span>Engine</span> 6.7L Power Stroke Diesel</li>
+                <li><span>Max Torque</span> 1,050 lb-ft</li>
+                <li><span>GVWR</span> 14,000 lbs</li>
+                <li><span>Max Tow</span> 40,000 lbs</li>
+                <li><span>Payload</span> 8,000 lbs</li>
+              </ul>
+              <div class="pros-cons">
+                <div class="pros">
+                  <strong>Pros</strong>
+                  <ul>
+                    <li>Highest max tow rating of any pickup — period</li>
+                    <li>Best-in-class payload capacity</li>
+                    <li>Proven Power Stroke reliability across high mileage</li>
+                    <li>Pro Trailer Backup Assist is genuinely useful</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <strong>Cons</strong>
+                  <ul>
+                    <li>Ride is stiff unloaded — leaf springs feel every bump</li>
+                    <li>Cab interior lags behind RAM on premium feel</li>
+                    <li>Turning radius requires patience in tight lots</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hotshot-take">
+                <strong>Hotshot Take:</strong> If your business lives and dies on max payload and DOT compliance, the F-450 is the answer. That 40,000 lb tow rating isn't marketing — it's real-world engineering margin that protects your livelihood.
+              </div>
+            </div>
+          </div>
+
+          <!-- CHEVY 3500HD -->
+          <div class="truck-card">
+            <div class="truck-img-wrap">
+              <img src="assets/silverado_3500.jpg" alt="Chevrolet Silverado 3500HD towing tractor" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"/>
+              <div class="truck-img-placeholder">🚛 Silverado 3500HD</div>
+            </div>
+            <div class="truck-badge badge-chevy">Chevy Silverado 3500HD</div>
+            <div class="truck-content">
+              <div class="truck-stars">★★★★☆</div>
+              <h3>Silverado 3500HD — The Value Play</h3>
+              <p class="truck-verdict">Strong numbers, lower entry price, and the Duramax diesel still earns its reputation on long hauls.</p>
+              <ul class="truck-specs">
+                <li><span>Engine</span> 6.6L Duramax Turbo Diesel</li>
+                <li><span>Max Torque</span> 975 lb-ft</li>
+                <li><span>GVWR</span> 14,000 lbs</li>
+                <li><span>Max Tow</span> 36,000 lbs</li>
+                <li><span>Payload</span> 7,442 lbs</li>
+              </ul>
+              <div class="pros-cons">
+                <div class="pros">
+                  <strong>Pros</strong>
+                  <ul>
+                    <li>Best price-to-capability ratio of the three</li>
+                    <li>Duramax/Allison combo is legendary for durability</li>
+                    <li>Best fuel economy of the diesel trio</li>
+                    <li>Wide dealer network = easier service nationwide</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <strong>Cons</strong>
+                  <ul>
+                    <li>Lowest torque rating in this comparison</li>
+                    <li>Interior feels a step behind RAM at similar trims</li>
+                    <li>Tow rating falls short of F-450 for max-spec loads</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hotshot-take">
+                <strong>Hotshot Take:</strong> The Silverado 3500HD is the smart buy for new hotshot operators watching startup costs. The Duramax-Allison pairing is bulletproof, and you'll spend less time at the dealer than you might with the competition.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VERDICT TABLE -->
+        <div class="verdict-table-wrap">
+          <h3 class="verdict-title">Quick Comparison</h3>
+          <div class="table-scroll">
+            <table class="verdict-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>RAM 3500</th>
+                  <th class="highlight-col">Ford F-450</th>
+                  <th>Silverado 3500HD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Max Torque</td><td>🏆 1,075 lb-ft</td><td class="highlight-col">1,050 lb-ft</td><td>975 lb-ft</td></tr>
+                <tr><td>Max Tow Rating</td><td>37,100 lbs</td><td class="highlight-col">🏆 40,000 lbs</td><td>36,000 lbs</td></tr>
+                <tr><td>Payload</td><td>7,680 lbs</td><td class="highlight-col">🏆 8,000 lbs</td><td>7,442 lbs</td></tr>
+                <tr><td>Ride Quality (unloaded)</td><td>🏆 Excellent</td><td class="highlight-col">Stiff</td><td>Good</td></tr>
+                <tr><td>Interior Quality</td><td>🏆 Premium</td><td class="highlight-col">Good</td><td>Good</td></tr>
+                <tr><td>Fuel Economy</td><td>Good</td><td class="highlight-col">Good</td><td>🏆 Best</td></tr>
+                <tr><td>Starting Price (est.)</td><td>~$55K</td><td class="highlight-col">~$57K</td><td>🏆 ~$51K</td></tr>
+                <tr><td>Best For</td><td>Livestock/Steel</td><td class="highlight-col">Max Payload Loads</td><td>New Operators</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="verdict-note">Specs reflect 2024 model year SRW/DRW configurations. Tow ratings vary by axle ratio, cab, and bed configuration. Always verify with your dealer before spec'ing a trailer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER REVIEWS -->
+  <section class="section reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Worth Your Time</span>
+        <h2>More Reviews</h2>
+        <p>Straight-talk reviews on things that actually matter.</p>
+      </div>
+
+      <div class="review-grid">
+
+        <div class="review-card">
+          <div class="review-thumb review-thumb-1">
+            <span class="review-emoji">🎧</span>
+          </div>
+          <div class="review-content">
+            <div class="review-meta">
+              <span class="review-cat">Tech</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <h3>Sony WH-1000XM5 Headphones</h3>
+            <p>The undisputed king of noise cancellation. Whether you're on a job site, a plane, or just trying to drown out your neighbors — these headphones are genuinely life-changing. Worth every penny of the $350 price tag.</p>
+            <div class="review-tags">
+              <span>Best ANC</span>
+              <span>30hr Battery</span>
+              <span>Premium Sound</span>
+            </div>
+            <div class="review-bottom">
+              <span class="review-score">9.5<small>/10</small></span>
+              <span class="review-label">Must Buy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-thumb review-thumb-2">
+            <span class="review-emoji">⚡</span>
+          </div>
+          <div class="review-content">
+            <div class="review-meta">
+              <span class="review-cat">Power Tools</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <h3>Milwaukee M18 FUEL Drill/Driver</h3>
+            <p>This thing doesn't drill holes — it punches through them. The brushless motor and REDLINK intelligence make it feel like it's cheating. If you work with your hands for a living, stop renting and start owning this platform.</p>
+            <div class="review-tags">
+              <span>Trade-Grade</span>
+              <span>Long Runtime</span>
+              <span>Best Platform</span>
+            </div>
+            <div class="review-bottom">
+              <span class="review-score">9.4<small>/10</small></span>
+              <span class="review-label">Must Buy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-thumb review-thumb-3">
+            <span class="review-emoji">📱</span>
+          </div>
+          <div class="review-content">
+            <div class="review-meta">
+              <span class="review-cat">Apps</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <h3>GasBuddy — Gas Price Tracker</h3>
+            <p>If you're driving for a living or just hate paying $0.30 more per gallon than the guy across the street, GasBuddy is non-negotiable. Real-time prices, crowd-sourced and accurate. Free version does everything you need.</p>
+            <div class="review-tags">
+              <span>Free App</span>
+              <span>Real-Time</span>
+              <span>Nationwide</span>
+            </div>
+            <div class="review-bottom">
+              <span class="review-score">8.8<small>/10</small></span>
+              <span class="review-label">Highly Recommended</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-thumb review-thumb-4">
+            <span class="review-emoji">🔧</span>
+          </div>
+          <div class="review-content">
+            <div class="review-meta">
+              <span class="review-cat">Auto</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <h3>ANCEL AD310 OBD2 Scanner</h3>
+            <p>$30 on Amazon. Reads and clears every check engine code on any car made after 1996. Dealerships charge $150 for a diagnostic — you can have this in your glovebox for one lunch. One of the best cheap tools you can own.</p>
+            <div class="review-tags">
+              <span>Under $30</span>
+              <span>Plug & Play</span>
+              <span>All Makes</span>
+            </div>
+            <div class="review-bottom">
+              <span class="review-score">9.7<small>/10</small></span>
+              <span class="review-label">Must Own</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-thumb review-thumb-5">
+            <span class="review-emoji">🛰️</span>
+          </div>
+          <div class="review-content">
+            <div class="review-meta">
+              <span class="review-cat">Internet</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <h3>Starlink — Satellite Internet</h3>
+            <p>If you live or work somewhere that cable never reached, Starlink is an actual game-changer. 100–200 Mbps from a satellite dish on your roof or truck — it genuinely works. The hardware cost is steep but the monthly rate is fair for what you get.</p>
+            <div class="review-tags">
+              <span>Rural Coverage</span>
+              <span>Mobile Option</span>
+              <span>Low Latency</span>
+            </div>
+            <div class="review-bottom">
+              <span class="review-score">9.0<small>/10</small></span>
+              <span class="review-label">Game Changer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-thumb review-thumb-6">
+            <span class="review-emoji">💳</span>
+          </div>
+          <div class="review-content">
+            <div class="review-meta">
+              <span class="review-cat">Finance</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <h3>EFS Fuel Card — For Owner Operators</h3>
+            <p>Diesel at a discount, nationwide. The EFS card gets you fleet pricing at thousands of truck stops across the country. For hotshot operators and owner-operators, this card pays for itself the first time you fill a 50-gallon tank.</p>
+            <div class="review-tags">
+              <span>Fleet Discounts</span>
+              <span>Nationwide</span>
+              <span>Owner Ops</span>
+            </div>
+            <div class="review-bottom">
+              <span class="review-score">9.3<small>/10</small></span>
+              <span class="review-label">Must Have</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="apple-dot">&#8226;</span> CandyApple
+          <p>Honest reviews. Free tools. No fluff.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#tools">Free Tools</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#top-review">This Week's Pick</a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 CandyApple. All opinions are our own.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
