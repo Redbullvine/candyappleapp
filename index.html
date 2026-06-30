@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CandyApple — Reviews & Free Tools Worth Knowing</title>
+  <title>CandyApple - Secret Free Websites Worth Bookmarking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -12,13 +12,17 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="#" class="nav-logo">
-      <span class="apple-dot">&#8226;</span> CandyApple
+    <a href="#" class="nav-logo" aria-label="CandyApple home">
+      <span class="logo-mark" aria-hidden="true">
+        <span class="logo-dot"></span>
+        <span class="logo-leaf"></span>
+      </span>
+      <span class="logo-word"><span class="logo-candy">CANDY</span><span class="logo-apple">APPLE</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#tools">Free Tools</a></li>
       <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#top-review" class="nav-cta">This Week's Pick</a></li>
+      <li><a href="#top-review" class="nav-cta">This Week’s Pick</a></li>
     </ul>
   </nav>
 
@@ -29,9 +33,9 @@
       <div class="apple-glow"></div>
       <svg class="apple-svg" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
         <!-- stem -->
-        <path d="M138 38 C145 15, 170 10, 168 5" stroke="#4a2e0a" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M138 38 C145 15, 170 10, 168 5" stroke="#9da8b3" stroke-width="5" fill="none" stroke-linecap="round"/>
         <!-- leaf -->
-        <path d="M145 30 C155 10, 185 15, 170 35 C160 45, 140 42, 145 30Z" fill="#2d7a2d"/>
+        <path d="M145 30 C155 10, 185 15, 170 35 C160 45, 140 42, 145 30Z" fill="#40c463"/>
         <!-- apple body -->
         <path d="M130 55 C80 55, 30 95, 30 160 C30 230, 75 290, 130 290 C185 290, 230 230, 230 160 C230 95, 180 55, 130 55Z" fill="url(#appleGradient)"/>
         <!-- shine highlight -->
@@ -40,10 +44,10 @@
         <ellipse cx="78" cy="100" rx="8" ry="14" fill="rgba(255,255,255,0.55)" transform="rotate(-20 78 100)"/>
         <defs>
           <radialGradient id="appleGradient" cx="40%" cy="35%" r="65%">
-            <stop offset="0%" stop-color="#ff2020"/>
-            <stop offset="35%" stop-color="#cc0000"/>
-            <stop offset="70%" stop-color="#8b0000"/>
-            <stop offset="100%" stop-color="#4a0000"/>
+            <stop offset="0%" stop-color="#ff1f1f"/>
+            <stop offset="42%" stop-color="#d00012"/>
+            <stop offset="74%" stop-color="#9b0008"/>
+            <stop offset="100%" stop-color="#430004"/>
           </radialGradient>
           <radialGradient id="shineGrad" cx="50%" cy="30%" r="70%">
             <stop offset="0%" stop-color="rgba(255,255,255,0.75)"/>
@@ -53,11 +57,11 @@
       </svg>
     </div>
     <div class="hero-text">
-      <p class="hero-eyebrow">The Internet's Best Kept Secrets</p>
-      <h1 class="hero-title">Candy<span class="red">Apple</span></h1>
-      <p class="hero-sub">Honest reviews. Free tools. No fluff. Just the good stuff — polished to a shine.</p>
+      <p class="hero-eyebrow">SECRET FREE WEBSITES</p>
+      <h1 class="hero-title"><span>THE RIGHT TOOL</span><span class="red">FOR THE JOB</span></h1>
+      <p class="hero-sub">Hand-picked free websites, clever tools, and useful internet finds — polished, tested, and easy to use.</p>
       <div class="hero-btns">
-        <a href="#top-review" class="btn btn-red">This Week's Review</a>
+        <a href="#top-review" class="btn btn-red">This Week’s Pick</a>
         <a href="#tools" class="btn btn-outline">Browse Free Tools</a>
       </div>
     </div>
@@ -67,9 +71,9 @@
   <section class="section tools-section" id="tools">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Always Free</span>
-        <h2>Tools Everybody Should Know</h2>
-        <p>Bookmarked, battle-tested, and straight up useful. These are the websites we actually use.</p>
+        <span class="section-tag">ALWAYS FREE</span>
+        <h2>Secret Websites Everybody Should Know</h2>
+        <p>The right tool saves time. These are the free sites we actually keep coming back to.</p>
       </div>
       <div class="tools-grid">
 
@@ -180,7 +184,7 @@
   <section class="section top-review-section" id="top-review">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag red-tag">⭐ This Week's Top Review</span>
+        <span class="section-tag red-tag">⭐ This Week’s Pick</span>
         <h2>Hotshot Trucking: The Big 3 Dually Showdown</h2>
         <p>RAM 3500 vs Ford F-450 vs Chevy Silverado 3500HD — which rig actually earns its keep on the road?</p>
       </div>
@@ -237,7 +241,7 @@
 
           <!-- FORD F-450 -->
           <div class="truck-card truck-card-featured">
-            <div class="featured-ribbon">Editor's Pick</div>
+            <div class="featured-ribbon">This Week’s Pick</div>
             <div class="truck-img-wrap">
               <img src="assets/f450.jpg" alt="Ford F-450 Super Duty Dually" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"/>
               <div class="truck-img-placeholder">🚛 F-450</div>
@@ -513,19 +517,23 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="apple-dot">&#8226;</span> CandyApple
-          <p>Honest reviews. Free tools. No fluff.</p>
+          <span class="logo-mark" aria-hidden="true">
+            <span class="logo-dot"></span>
+            <span class="logo-leaf"></span>
+          </span>
+          <span class="logo-word"><span class="logo-candy">CANDY</span><span class="logo-apple">APPLE</span></span>
+          <p>No fluff. Just the good stuff.</p>
         </div>
         <div class="footer-links">
           <a href="#tools">Free Tools</a>
           <a href="#reviews">Reviews</a>
-          <a href="#top-review">This Week's Pick</a>
+          <a href="#top-review">This Week’s Pick</a>
         </div>
       </div>
       <p class="footer-copy">&copy; 2026 CandyApple. All opinions are our own.</p>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
