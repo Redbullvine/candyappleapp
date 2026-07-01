@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crystal tells Brandon about the consignment — CandyApple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,31,31,0.22) 0%, transparent 32%),
+        radial-gradient(circle at 86% 10%, rgba(64,196,99,0.14) 0%, transparent 28%),
+        #050505;
+      color: #eef1f4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .back {
+      position: fixed;
+      top: 20px;
+      left: 24px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9da8b3;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back:hover { color: #e8edf2; }
+    .back::before { content: '← '; }
+
+    .wrap {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      letter-spacing: 2px;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 22%, #9da8b3 48%, #ffffff 68%, #3f4852 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+
+    h1 span {
+      color: #ff1f1f;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      text-shadow: 0 0 32px rgba(255,31,31,0.5);
+    }
+
+    .video-wrap {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,31,31,0.32);
+      box-shadow:
+        0 0 60px rgba(255,31,31,0.18),
+        0 0 30px rgba(64,196,99,0.1),
+        0 24px 60px rgba(0,0,0,0.6);
+      aspect-ratio: 16 / 9;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <a class="back" href="/">CandyApple</a>
+  <div class="wrap">
+    <h1>Crystal tells <span>Brandon</span> about the consignment</h1>
+    <div class="video-wrap">
+      <video controls autoplay>
+        <source src="../assets/Ben_Lego.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</body>
+</html>
