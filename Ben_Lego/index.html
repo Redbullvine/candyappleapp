@@ -69,6 +69,62 @@
       text-shadow: 0 0 32px rgba(255,31,31,0.5);
     }
 
+    .promo {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(255,31,31,0.12), rgba(18,18,18,0.96) 50%, rgba(64,196,99,0.08));
+      border: 1px solid rgba(255,31,31,0.32);
+      border-radius: 10px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 0 40px rgba(255,31,31,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .promo-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 22%, #9da8b3 48%, #ffffff 68%, #3f4852 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .promo-text p {
+      font-size: 0.88rem;
+      color: #9da8b3;
+      line-height: 1.5;
+      max-width: 480px;
+    }
+
+    .promo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent 42%), linear-gradient(135deg, #ff1f1f, #9b0008);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 0 24px rgba(255,31,31,0.36), inset 0 1px 0 rgba(255,255,255,0.24);
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+
+    .promo-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(255,31,31,0.54), inset 0 1px 0 rgba(255,255,255,0.34);
+    }
+
     .video-wrap {
       width: 100%;
       border-radius: 10px;
@@ -99,6 +155,15 @@
         <source src="../assets/Ben_Lego.mp4" type="video/mp4" />
       </video>
     </div>
+
+    <div class="promo">
+      <div class="promo-text">
+        <h2>🍎 CandyApple — Secret Websites Everybody Should Know</h2>
+        <p>Free tools, hidden gems, and useful sites the internet doesn't talk about enough — hand-picked and actually worth your time.</p>
+      </div>
+      <a href="https://candyapple.app" target="_blank" class="promo-btn">Explore Free Tools →</a>
+    </div>
+
   </div>
 </body>
 </html>
