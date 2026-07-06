@@ -20,7 +20,11 @@ const fadeIn = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.style.opacity = '1';
-      e.target.style.transform = e.target.style.transform.replace('translateY(20px)', 'translateY(0)');
+      e.target.style.transform = 'translateY(0)';
+      window.setTimeout(() => {
+        e.target.style.opacity = '';
+        e.target.style.transform = '';
+      }, 450);
       fadeIn.unobserve(e.target);
     }
   });
@@ -28,7 +32,7 @@ const fadeIn = new IntersectionObserver((entries) => {
 
 cards.forEach(c => {
   c.style.opacity = '0';
-  c.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-  c.style.transform += ' translateY(20px)';
+  c.style.transition = 'opacity 0.4s ease, transform 0.4s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease';
+  c.style.transform = 'translateY(20px)';
   fadeIn.observe(c);
 });
