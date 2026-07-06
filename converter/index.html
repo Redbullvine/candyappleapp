@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Converter — CandyApple</title>
+  <meta name="description" content="Free instant converter for currency (live rates + crypto), length, weight, temperature, volume, cooking, speed, data, fuel economy and more. No ads, no sign-up." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --candy-red: #ff1f1f;
+      --candy-red-dark: #9b0008;
+      --apple-green: #40c463;
+      --apple-green-dark: #167a34;
+      --chrome: #e8edf2;
+      --chrome-mid: #9da8b3;
+      --chrome-dark: #3f4852;
+      --black: #050505;
+      --panel: #121212;
+      --text: #eef1f4;
+      --chrome-gradient: linear-gradient(135deg, #ffffff 0%, var(--chrome) 22%, var(--chrome-mid) 48%, #ffffff 68%, var(--chrome-dark) 100%);
+      --panel-gloss: linear-gradient(145deg, rgba(232,237,242,0.09), rgba(18,18,18,0.96) 36%, rgba(5,5,5,0.96));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,31,31,0.24) 0%, transparent 32%),
+        radial-gradient(circle at 86% 10%, rgba(64,196,99,0.16) 0%, transparent 28%),
+        radial-gradient(circle at 70% 86%, rgba(232,237,242,0.10) 0%, transparent 34%),
+        var(--black);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: rgba(5,5,5,0.86);
+      backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom: 1px solid rgba(232,237,242,0.14);
+      box-shadow: 0 10px 34px rgba(0,0,0,0.42);
+    }
+
+    .nav::after {
+      content: '';
+      position: absolute;
+      left: 32px; right: 32px; bottom: -1px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,31,31,0.8), rgba(232,237,242,0.72), rgba(64,196,99,0.7), transparent);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 1.6px;
+      color: var(--chrome);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1;
+      text-shadow: 0 0 24px rgba(232,237,242,0.18);
+    }
+
+    .logo-mark { position: relative; width: 22px; height: 22px; flex: 0 0 22px; filter: drop-shadow(0 0 12px rgba(255,31,31,0.48)); }
+    .logo-dot {
+      position: absolute; inset: 4px 3px 2px;
+      border-radius: 50% 50% 46% 46%;
+      background:
+        radial-gradient(circle at 34% 24%, rgba(255,255,255,0.94) 0 12%, transparent 13%),
+        radial-gradient(circle at 38% 34%, #ff6262 0%, var(--candy-red) 34%, var(--candy-red-dark) 76%, #4b0005 100%);
+      border: 1px solid rgba(232,237,242,0.68);
+      box-shadow: inset 0 -4px 8px rgba(0,0,0,0.35);
+    }
+    .logo-leaf {
+      position: absolute; top: 0; right: -1px;
+      width: 11px; height: 7px;
+      border-radius: 10px 0 10px 0;
+      background: linear-gradient(135deg, var(--apple-green), var(--apple-green-dark));
+      border: 1px solid rgba(232,237,242,0.5);
+      transform: rotate(-24deg);
+      box-shadow: 0 0 10px rgba(64,196,99,0.32);
+    }
+    .logo-candy { background: var(--chrome-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo-apple { color: var(--candy-red); text-shadow: 0 0 18px rgba(255,31,31,0.48); }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--chrome-mid);
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    .nav-links a:hover { color: var(--chrome); text-shadow: 0 0 18px rgba(232,237,242,0.22); }
+
+    /* ===== HEADER ===== */
+    .page-head {
+      text-align: center;
+      padding: 140px 24px 36px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--chrome);
+      background:
+        linear-gradient(135deg, rgba(232,237,242,0.18), rgba(157,168,179,0.12) 48%, rgba(63,72,82,0.22)),
+        rgba(18,18,18,0.82);
+      border: 1px solid rgba(232,237,242,0.42);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 0 22px rgba(232,237,242,0.16), 0 2px 8px rgba(0,0,0,0.4);
+      text-shadow: 0 0 14px rgba(232,237,242,0.4);
+    }
+
+    .page-head h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      letter-spacing: 3px;
+      line-height: 0.95;
+      background: var(--chrome-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .page-head h1 .red {
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      color: var(--candy-red);
+      text-shadow: 0 0 40px rgba(255,30,30,0.6);
+    }
+
+    .page-head p {
+      color: var(--chrome-mid);
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* ===== MAIN ===== */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 96px;
+    }
+
+    /* Category tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tab {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--chrome-mid);
+      background: rgba(18,18,18,0.82);
+      border: 1px solid rgba(232,237,242,0.2);
+      border-radius: 100px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .tab:hover {
+      color: var(--chrome);
+      border-color: rgba(64,196,99,0.6);
+      transform: translateY(-1px);
+    }
+
+    .tab.active {
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.22), transparent 38%),
+        linear-gradient(135deg, var(--candy-red), var(--candy-red-dark));
+      border-color: rgba(232,237,242,0.34);
+      box-shadow: 0 0 22px rgba(255,31,31,0.32), inset 0 1px 0 rgba(255,255,255,0.26);
+    }
+
+    /* Converter card */
+    .conv-card {
+      background: var(--panel-gloss);
+      border: 1px solid rgba(255,31,31,0.3);
+      border-radius: 10px;
+      padding: 32px 28px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 18px 44px rgba(0,0,0,0.4), 0 0 34px rgba(255,31,31,0.08);
+    }
+
+    .conv-row {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr auto 1.3fr;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--chrome-mid);
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      background: rgba(5,5,5,0.6);
+      border: 1px solid rgba(232,237,242,0.22);
+      border-radius: 8px;
+      padding: 13px 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239da8b3'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 34px;
+    }
+
+    .field select option { background: #121212; color: var(--text); }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: rgba(64,196,99,0.7);
+      box-shadow: 0 0 18px rgba(64,196,99,0.18);
+    }
+
+    /* hide number spinners */
+    .field input::-webkit-outer-spin-button,
+    .field input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .field input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+    .swap-btn {
+      align-self: end;
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--chrome);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14), transparent 44%),
+        rgba(18,18,18,0.9);
+      border: 1px solid rgba(232,237,242,0.28);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .swap-btn:hover {
+      border-color: rgba(64,196,99,0.7);
+      box-shadow: 0 0 20px rgba(64,196,99,0.22);
+      transform: rotate(180deg);
+    }
+
+    /* Result */
+    .result-box {
+      text-align: center;
+      background: rgba(5,5,5,0.44);
+      border: 1px solid rgba(232,237,242,0.14);
+      border-radius: 10px;
+      padding: 26px 20px 22px;
+      position: relative;
+    }
+
+    .result-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      color: var(--candy-red);
+      text-shadow: 0 0 34px rgba(255,31,31,0.45);
+      word-break: break-all;
+    }
+
+    .result-unit {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      letter-spacing: 2px;
+      background: var(--chrome-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-left: 10px;
+    }
+
+    .formula {
+      font-size: 0.8rem;
+      color: var(--chrome-mid);
+      margin-top: 10px;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--chrome-mid);
+      background: rgba(18,18,18,0.85);
+      border: 1px solid rgba(232,237,242,0.2);
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .copy-btn:hover { color: var(--apple-green); border-color: rgba(64,196,99,0.5); }
+
+    .rate-note {
+      font-size: 0.72rem;
+      color: var(--chrome-mid);
+      opacity: 0.75;
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+      min-height: 1.2em;
+    }
+
+    /* Quick table */
+    .quick-wrap {
+      margin-top: 28px;
+      background: var(--panel-gloss);
+      border: 1px solid rgba(232,237,242,0.16);
+      border-radius: 10px;
+      padding: 26px 28px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 14px 30px rgba(0,0,0,0.25);
+    }
+
+    .quick-wrap h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      background: var(--chrome-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 14px;
+    }
+
+    .quick-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+
+    .quick-table th {
+      background: rgba(63,72,82,0.24);
+      color: var(--chrome);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(232,237,242,0.16);
+    }
+
+    .quick-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid rgba(232,237,242,0.08);
+      color: var(--text);
+    }
+
+    .quick-table tr:last-child td { border-bottom: none; }
+    .quick-table tr:hover td { background: rgba(255,31,31,0.05); }
+    .quick-table td:last-child { color: var(--apple-green); font-weight: 600; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(232,237,242,0.12);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.75rem;
+      color: var(--chrome-mid);
+      opacity: 0.6;
+    }
+
+    @media (max-width: 680px) {
+      .nav { padding: 14px 20px; }
+      .nav::after { left: 20px; right: 20px; }
+      .nav-links { gap: 18px; }
+      .page-head { padding-top: 116px; }
+      .conv-card { padding: 24px 18px; }
+      .conv-row { grid-template-columns: 1fr 1fr; }
+      .conv-row .field-amount { grid-column: 1 / -1; }
+      .swap-btn { display: none; }
+      .field select { font-size: 0.82rem; padding: 13px 26px 13px 10px; background-position: right 10px center; }
+      .quick-wrap { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="../" class="nav-logo" aria-label="CandyApple home">
+      <span class="logo-mark" aria-hidden="true">
+        <span class="logo-dot"></span>
+        <span class="logo-leaf"></span>
+      </span>
+      <span class="logo-word"><span class="logo-candy">CANDY</span><span class="logo-apple">APPLE</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#tools">Free Tools</a></li>
+      <li><a href="../#reviews">Reviews</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-head">
+    <span class="section-tag">CANDYAPPLE ORIGINAL · ALWAYS FREE</span>
+    <h1>THE <span class="red">CONVERTER</span></h1>
+    <p>Currency with live rates (crypto included), plus every unit you'll ever need to flip. No ads, no sign-up, no nonsense.</p>
+  </header>
+
+  <!-- CONVERTER -->
+  <main class="wrap">
+    <div class="tabs" id="tabs" role="tablist"></div>
+
+    <div class="conv-card">
+      <div class="conv-row">
+        <div class="field field-amount">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" value="1" step="any" inputmode="decimal" />
+        </div>
+        <div class="field">
+          <label for="from">From</label>
+          <select id="from"></select>
+        </div>
+        <button class="swap-btn" id="swap" title="Swap units" aria-label="Swap units">⇄</button>
+        <div class="field">
+          <label for="to">To</label>
+          <select id="to"></select>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <button class="copy-btn" id="copy">Copy</button>
+        <span class="result-value" id="result">—</span><span class="result-unit" id="result-unit"></span>
+        <div class="formula" id="formula"></div>
+      </div>
+
+      <div class="rate-note" id="rate-note"></div>
+    </div>
+
+    <div class="quick-wrap">
+      <h2>Quick Reference</h2>
+      <table class="quick-table">
+        <thead>
+          <tr><th id="qh-from">From</th><th id="qh-to">To</th></tr>
+        </thead>
+        <tbody id="quick-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 CandyApple · The Converter. Currency rates are mid-market and for reference only.
+  </footer>
+
+  <script>
+    'use strict';
+
+    // ---------- Unit data ----------
+    // Each unit: { name, f } where f = value of 1 unit in the category's base unit,
+    // OR { name, to, from } functions for non-linear conversions (temp, fuel economy).
+    const CATS = {
+      currency: {
+        label: '💱 Currency',
+        units: {},           // populated after rates load
+        def: ['usd', 'eur', 100],
+        live: true
+      },
+      length: {
+        label: '📏 Length',
+        units: {
+          mm:  { name: 'Millimeters (mm)', f: 0.001 },
+          cm:  { name: 'Centimeters (cm)', f: 0.01 },
+          m:   { name: 'Meters (m)', f: 1 },
+          km:  { name: 'Kilometers (km)', f: 1000 },
+          in:  { name: 'Inches (in)', f: 0.0254 },
+          ft:  { name: 'Feet (ft)', f: 0.3048 },
+          yd:  { name: 'Yards (yd)', f: 0.9144 },
+          mi:  { name: 'Miles (mi)', f: 1609.344 },
+          nmi: { name: 'Nautical Miles (nmi)', f: 1852 }
+        },
+        def: ['ft', 'm', 1]
+      },
+      weight: {
+        label: '⚖️ Weight',
+        units: {
+          mg:    { name: 'Milligrams (mg)', f: 1e-6 },
+          g:     { name: 'Grams (g)', f: 0.001 },
+          kg:    { name: 'Kilograms (kg)', f: 1 },
+          t:     { name: 'Metric Tons (t)', f: 1000 },
+          oz:    { name: 'Ounces (oz)', f: 0.028349523125 },
+          lb:    { name: 'Pounds (lb)', f: 0.45359237 },
+          st:    { name: 'Stone (st)', f: 6.35029318 },
+          uston: { name: 'US Tons', f: 907.18474 }
+        },
+        def: ['lb', 'kg', 1]
+      },
+      temp: {
+        label: '🌡️ Temperature',
+        units: {
+          c: { name: 'Celsius (°C)',    to: v => v,                from: b => b },
+          f: { name: 'Fahrenheit (°F)', to: v => (v - 32) * 5 / 9, from: b => b * 9 / 5 + 32 },
+          k: { name: 'Kelvin (K)',      to: v => v - 273.15,       from: b => b + 273.15 }
+        },
+        def: ['f', 'c', 72]
+      },
+      volume: {
+        label: '🥤 Volume & Cooking',
+        units: {
+          ml:     { name: 'Milliliters (mL)', f: 0.001 },
+          l:      { name: 'Liters (L)', f: 1 },
+          tsp:    { name: 'Teaspoons (US)', f: 0.00492892159375 },
+          tbsp:   { name: 'Tablespoons (US)', f: 0.01478676478125 },
+          floz:   { name: 'Fluid Ounces (US)', f: 0.0295735295625 },
+          cup:    { name: 'Cups (US)', f: 0.2365882365 },
+          pt:     { name: 'Pints (US)', f: 0.473176473 },
+          qt:     { name: 'Quarts (US)', f: 0.946352946 },
+          gal:    { name: 'Gallons (US)', f: 3.785411784 },
+          impgal: { name: 'Gallons (UK)', f: 4.54609 },
+          m3:     { name: 'Cubic Meters (m³)', f: 1000 }
+        },
+        def: ['cup', 'ml', 1]
+      },
+      area: {
+        label: '🗺️ Area',
+        units: {
+          cm2: { name: 'Square Centimeters (cm²)', f: 0.0001 },
+          m2:  { name: 'Square Meters (m²)', f: 1 },
+          ha:  { name: 'Hectares (ha)', f: 10000 },
+          km2: { name: 'Square Kilometers (km²)', f: 1e6 },
+          in2: { name: 'Square Inches (in²)', f: 0.00064516 },
+          ft2: { name: 'Square Feet (ft²)', f: 0.09290304 },
+          yd2: { name: 'Square Yards (yd²)', f: 0.83612736 },
+          ac:  { name: 'Acres', f: 4046.8564224 },
+          mi2: { name: 'Square Miles (mi²)', f: 2589988.110336 }
+        },
+        def: ['ac', 'ft2', 1]
+      },
+      speed: {
+        label: '🏎️ Speed',
+        units: {
+          ms:   { name: 'Meters/Second (m/s)', f: 1 },
+          kmh:  { name: 'Kilometers/Hour (km/h)', f: 1 / 3.6 },
+          mph:  { name: 'Miles/Hour (mph)', f: 0.44704 },
+          kn:   { name: 'Knots (kn)', f: 0.514444444 },
+          fts:  { name: 'Feet/Second (ft/s)', f: 0.3048 },
+          mach: { name: 'Mach (sea level)', f: 340.29 }
+        },
+        def: ['mph', 'kmh', 60]
+      },
+      data: {
+        label: '💾 Data',
+        units: {
+          bit: { name: 'Bits (b)', f: 0.125 },
+          B:   { name: 'Bytes (B)', f: 1 },
+          KB:  { name: 'Kilobytes (KB)', f: 1e3 },
+          MB:  { name: 'Megabytes (MB)', f: 1e6 },
+          GB:  { name: 'Gigabytes (GB)', f: 1e9 },
+          TB:  { name: 'Terabytes (TB)', f: 1e12 },
+          KiB: { name: 'Kibibytes (KiB)', f: 1024 },
+          MiB: { name: 'Mebibytes (MiB)', f: 1048576 },
+          GiB: { name: 'Gibibytes (GiB)', f: 1073741824 },
+          TiB: { name: 'Tebibytes (TiB)', f: 1099511627776 }
+        },
+        def: ['GB', 'GiB', 1]
+      },
+      time: {
+        label: '⏱️ Time',
+        units: {
+          ms:  { name: 'Milliseconds (ms)', f: 0.001 },
+          s:   { name: 'Seconds (s)', f: 1 },
+          min: { name: 'Minutes (min)', f: 60 },
+          hr:  { name: 'Hours (hr)', f: 3600 },
+          day: { name: 'Days', f: 86400 },
+          wk:  { name: 'Weeks', f: 604800 },
+          mo:  { name: 'Months (avg)', f: 2629746 },
+          yr:  { name: 'Years', f: 31556952 }
+        },
+        def: ['hr', 'min', 1]
+      },
+      fuel: {
+        label: '⛽ Fuel Economy',
+        units: {
+          mpgus: { name: 'Miles/Gallon (US)', to: v => v * 0.4251437075, from: b => b / 0.4251437075 },
+          mpguk: { name: 'Miles/Gallon (UK)', to: v => v * 0.3540061899, from: b => b / 0.3540061899 },
+          kml:   { name: 'Kilometers/Liter (km/L)', to: v => v, from: b => b },
+          l100:  { name: 'Liters/100km (L/100km)', to: v => 100 / v, from: b => 100 / b }
+        },
+        def: ['mpgus', 'l100', 25]
+      },
+      pressure: {
+        label: '🔩 Pressure',
+        units: {
+          pa:   { name: 'Pascals (Pa)', f: 1 },
+          kpa:  { name: 'Kilopascals (kPa)', f: 1000 },
+          bar:  { name: 'Bar', f: 100000 },
+          psi:  { name: 'PSI', f: 6894.757293168 },
+          atm:  { name: 'Atmospheres (atm)', f: 101325 },
+          mmhg: { name: 'mmHg (Torr)', f: 133.322387415 },
+          inhg: { name: 'Inches of Mercury (inHg)', f: 3386.389 }
+        },
+        def: ['psi', 'bar', 32]
+      },
+      energy: {
+        label: '⚡ Energy',
+        units: {
+          j:    { name: 'Joules (J)', f: 1 },
+          kj:   { name: 'Kilojoules (kJ)', f: 1000 },
+          cal:  { name: 'Calories (cal)', f: 4.184 },
+          kcal: { name: 'Kilocalories (kcal / food Cal)', f: 4184 },
+          wh:   { name: 'Watt-hours (Wh)', f: 3600 },
+          kwh:  { name: 'Kilowatt-hours (kWh)', f: 3.6e6 },
+          btu:  { name: 'BTU', f: 1055.05585262 },
+          ftlb: { name: 'Foot-pounds (ft·lb)', f: 1.3558179483 }
+        },
+        def: ['kcal', 'kj', 500]
+      },
+      power: {
+        label: '🐎 Power',
+        units: {
+          w:     { name: 'Watts (W)', f: 1 },
+          kw:    { name: 'Kilowatts (kW)', f: 1000 },
+          mw:    { name: 'Megawatts (MW)', f: 1e6 },
+          hp:    { name: 'Horsepower (hp)', f: 745.699871582 },
+          ps:    { name: 'Metric Horsepower (PS)', f: 735.49875 },
+          btuh:  { name: 'BTU/hour', f: 0.29307107 }
+        },
+        def: ['hp', 'kw', 400]
+      }
+    };
+
+    // Curated currency list — only codes present in the rates feed get shown.
+    const CURRENCY_NAMES = {
+      usd: 'US Dollar ($)',        eur: 'Euro (€)',             gbp: 'British Pound (£)',
+      jpy: 'Japanese Yen (¥)',     cad: 'Canadian Dollar',      aud: 'Australian Dollar',
+      chf: 'Swiss Franc',          cny: 'Chinese Yuan',         inr: 'Indian Rupee',
+      krw: 'South Korean Won',     mxn: 'Mexican Peso',         brl: 'Brazilian Real',
+      sek: 'Swedish Krona',        nok: 'Norwegian Krone',      dkk: 'Danish Krone',
+      pln: 'Polish Zloty',         czk: 'Czech Koruna',         huf: 'Hungarian Forint',
+      try: 'Turkish Lira',         zar: 'South African Rand',   nzd: 'New Zealand Dollar',
+      sgd: 'Singapore Dollar',     hkd: 'Hong Kong Dollar',     twd: 'Taiwan Dollar',
+      thb: 'Thai Baht',            php: 'Philippine Peso',      idr: 'Indonesian Rupiah',
+      vnd: 'Vietnamese Dong',      aed: 'UAE Dirham',           sar: 'Saudi Riyal',
+      ils: 'Israeli Shekel',       btc: '₿ Bitcoin',            eth: 'Ξ Ethereum',
+      doge: 'Ð Dogecoin',          ltc: 'Litecoin',             xrp: 'XRP'
+    };
+
+    const RATE_URLS = [
+      'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.min.json',
+      'https://latest.currency-api.pages.dev/v1/currencies/usd.min.json'
+    ];
+    const RATE_CACHE_KEY = 'ca_rates_v1';
+    const RATE_MAX_AGE = 12 * 60 * 60 * 1000; // 12h
+
+    let ratesDate = null;
+    let ratesFailed = false;
+
+    // ---------- State ----------
+    const el = {
+      tabs: document.getElementById('tabs'),
+      amount: document.getElementById('amount'),
+      from: document.getElementById('from'),
+      to: document.getElementById('to'),
+      swap: document.getElementById('swap'),
+      result: document.getElementById('result'),
+      resultUnit: document.getElementById('result-unit'),
+      formula: document.getElementById('formula'),
+      copy: document.getElementById('copy'),
+      rateNote: document.getElementById('rate-note'),
+      quickBody: document.getElementById('quick-body'),
+      qhFrom: document.getElementById('qh-from'),
+      qhTo: document.getElementById('qh-to')
+    };
+
+    let currentCat = localStorage.getItem('ca_conv_cat') || 'currency';
+    if (!CATS[currentCat]) currentCat = 'currency';
+
+    // ---------- Helpers ----------
+    function toBase(v, u)   { return u.f !== undefined ? v * u.f : u.to(v); }
+    function fromBase(b, u) { return u.f !== undefined ? b / u.f : u.from(b); }
+
+    function convert(v, from, to) {
+      return fromBase(toBase(v, from), to);
+    }
+
+    function fmt(n) {
+      if (typeof n !== 'number' || !isFinite(n)) return '—';
+      if (n === 0) return '0';
+      const abs = Math.abs(n);
+      if (abs >= 1e15 || abs < 1e-9) return n.toExponential(4);
+      const digits = abs >= 1000 ? 2 : abs >= 1 ? 4 : 8;
+      return n.toLocaleString('en-US', { maximumFractionDigits: digits });
+    }
+
+    function shortName(key, unit) {
+      // Prefer the parenthesized symbol if present, else the key uppercased.
+      const m = unit.name.match(/\(([^)]+)\)\s*$/);
+      if (m) return m[1];
+      return currentCat === 'currency' ? key.toUpperCase() : unit.name;
+    }
+
+    // ---------- Rendering ----------
+    function buildTabs() {
+      el.tabs.innerHTML = '';
+      for (const [key, cat] of Object.entries(CATS)) {
+        const b = document.createElement('button');
+        b.className = 'tab' + (key === currentCat ? ' active' : '');
+        b.textContent = cat.label;
+        b.setAttribute('role', 'tab');
+        b.addEventListener('click', () => {
+          currentCat = key;
+          localStorage.setItem('ca_conv_cat', key);
+          buildTabs();
+          populateUnits(true);
+          update();
+        });
+        el.tabs.appendChild(b);
+      }
+    }
+
+    function populateUnits(useDefaults) {
+      const cat = CATS[currentCat];
+      const keys = Object.keys(cat.units);
+      const prevFrom = el.from.value, prevTo = el.to.value;
+
+      for (const sel of [el.from, el.to]) {
+        sel.innerHTML = '';
+        for (const k of keys) {
+          const o = document.createElement('option');
+          o.value = k;
+          o.textContent = cat.units[k].name;
+          sel.appendChild(o);
+        }
+      }
+
+      if (!useDefaults && keys.includes(prevFrom) && keys.includes(prevTo)) {
+        el.from.value = prevFrom;
+        el.to.value = prevTo;
+      } else if (keys.length) {
+        const [df, dt, dv] = cat.def;
+        el.from.value = keys.includes(df) ? df : keys[0];
+        el.to.value = keys.includes(dt) ? dt : keys[Math.min(1, keys.length - 1)];
+        el.amount.value = dv;
+      }
+    }
+
+    function update() {
+      const cat = CATS[currentCat];
+      const keys = Object.keys(cat.units);
+
+      if (cat.live && keys.length === 0) {
+        el.result.textContent = ratesFailed ? 'RATES OFFLINE' : 'LOADING…';
+        el.resultUnit.textContent = '';
+        el.formula.textContent = ratesFailed
+          ? 'Could not fetch live rates. Check your connection and refresh.'
+          : 'Fetching live exchange rates…';
+        el.rateNote.textContent = '';
+        el.quickBody.innerHTML = '';
+        return;
+      }
+
+      const from = cat.units[el.from.value];
+      const to = cat.units[el.to.value];
+      if (!from || !to) return;
+
+      const v = parseFloat(el.amount.value);
+      const out = isNaN(v) ? NaN : convert(v, from, to);
+
+      el.result.textContent = fmt(out);
+      el.resultUnit.textContent = shortName(el.to.value, to);
+
+      const one = convert(1, from, to);
+      el.formula.textContent = isFinite(one)
+        ? `1 ${shortName(el.from.value, from)} = ${fmt(one)} ${shortName(el.to.value, to)}`
+        : '';
+
+      el.rateNote.textContent = cat.live && ratesDate
+        ? `Live mid-market rates · updated ${ratesDate} · refreshed twice daily`
+        : '';
+
+      buildQuickTable(from, to);
+    }
+
+    function buildQuickTable(from, to) {
+      const fromLabel = shortName(el.from.value, from);
+      const toLabel = shortName(el.to.value, to);
+      el.qhFrom.textContent = from.name;
+      el.qhTo.textContent = to.name;
+      el.quickBody.innerHTML = '';
+      for (const v of [1, 5, 10, 25, 50, 100, 500, 1000]) {
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td');
+        const td2 = document.createElement('td');
+        td1.textContent = `${v.toLocaleString('en-US')} ${fromLabel}`;
+        td2.textContent = `${fmt(convert(v, from, to))} ${toLabel}`;
+        tr.append(td1, td2);
+        el.quickBody.appendChild(tr);
+      }
+    }
+
+    // ---------- Currency rates ----------
+    function applyRates(data) {
+      ratesDate = data.date || null;
+      const units = {};
+      for (const [code, label] of Object.entries(CURRENCY_NAMES)) {
+        if (code === 'usd') { units.usd = { name: label, f: 1 }; continue; }
+        const r = data.usd && data.usd[code];
+        if (typeof r === 'number' && r > 0) units[code] = { name: label, f: 1 / r };
+      }
+      CATS.currency.units = units;
+      if (currentCat === 'currency') {
+        populateUnits(true);
+        update();
+      }
+    }
+
+    async function loadRates() {
+      try {
+        const cached = JSON.parse(localStorage.getItem(RATE_CACHE_KEY));
+        if (cached && Date.now() - cached.fetched < RATE_MAX_AGE) {
+          applyRates(cached.data);
+          return;
+        }
+      } catch (e) { /* bad cache, refetch */ }
+
+      for (const url of RATE_URLS) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (!data || !data.usd) continue;
+          localStorage.setItem(RATE_CACHE_KEY, JSON.stringify({ fetched: Date.now(), data }));
+          applyRates(data);
+          return;
+        } catch (e) { /* try next source */ }
+      }
+
+      // Both sources failed — try stale cache before giving up.
+      try {
+        const cached = JSON.parse(localStorage.getItem(RATE_CACHE_KEY));
+        if (cached) { applyRates(cached.data); return; }
+      } catch (e) { /* nothing usable */ }
+
+      ratesFailed = true;
+      if (currentCat === 'currency') update();
+    }
+
+    // ---------- Events ----------
+    el.amount.addEventListener('input', update);
+    el.from.addEventListener('change', update);
+    el.to.addEventListener('change', update);
+
+    el.swap.addEventListener('click', () => {
+      const f = el.from.value;
+      el.from.value = el.to.value;
+      el.to.value = f;
+      update();
+    });
+
+    el.copy.addEventListener('click', async () => {
+      const text = `${el.result.textContent} ${el.resultUnit.textContent}`.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        el.copy.textContent = 'Copied!';
+        setTimeout(() => { el.copy.textContent = 'Copy'; }, 1400);
+      } catch (e) { /* clipboard blocked — no-op */ }
+    });
+
+    // ---------- Init ----------
+    buildTabs();
+    populateUnits(true);
+    update();
+    loadRates();
+  </script>
+</body>
+</html>
