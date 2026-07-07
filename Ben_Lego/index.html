@@ -13,10 +13,10 @@
     body {
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at 18% 16%, rgba(255,31,31,0.22) 0%, transparent 32%),
-        radial-gradient(circle at 86% 10%, rgba(64,196,99,0.14) 0%, transparent 28%),
-        #050505;
-      color: #eef1f4;
+        radial-gradient(circle at 18% 16%, rgba(217,4,41,0.06) 0%, transparent 32%),
+        radial-gradient(circle at 86% 10%, rgba(46,158,80,0.07) 0%, transparent 28%),
+        #faf9f6;
+      color: #1f1c18;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -33,11 +33,11 @@
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #9da8b3;
+      color: #5f5b54;
       text-decoration: none;
       transition: color 0.2s;
     }
-    .back:hover { color: #e8edf2; }
+    .back:hover { color: #d90429; }
     .back::before { content: '← '; }
 
     .wrap {
@@ -54,7 +54,7 @@
       font-size: clamp(2rem, 5vw, 3.4rem);
       letter-spacing: 2px;
       text-align: center;
-      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 22%, #9da8b3 48%, #ffffff 68%, #3f4852 100%);
+      background: linear-gradient(135deg, #4a443c 0%, #1f1c18 40%, #57514a 70%, #1f1c18 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -62,17 +62,17 @@
     }
 
     h1 span {
-      color: #ff1f1f;
+      color: #d90429;
       background: none;
       -webkit-background-clip: initial;
       background-clip: initial;
-      text-shadow: 0 0 32px rgba(255,31,31,0.5);
+      text-shadow: 0 4px 22px rgba(217,4,41,0.25);
     }
 
     .promo {
       width: 100%;
-      background: linear-gradient(135deg, rgba(255,31,31,0.12), rgba(18,18,18,0.96) 50%, rgba(64,196,99,0.08));
-      border: 1px solid rgba(255,31,31,0.32);
+      background: linear-gradient(160deg, #ffffff, #fdfcf9 55%, #f6f4ee);
+      border: 1px solid rgba(217,4,41,0.24);
       border-radius: 10px;
       padding: 28px 32px;
       display: flex;
@@ -80,14 +80,14 @@
       justify-content: space-between;
       gap: 24px;
       flex-wrap: wrap;
-      box-shadow: 0 0 40px rgba(255,31,31,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+      box-shadow: 0 10px 28px rgba(31,28,24,0.09);
     }
 
     .promo-text h2 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.6rem;
       letter-spacing: 2px;
-      background: linear-gradient(135deg, #ffffff 0%, #e8edf2 22%, #9da8b3 48%, #ffffff 68%, #3f4852 100%);
+      background: linear-gradient(135deg, #4a443c 0%, #1f1c18 40%, #57514a 70%, #1f1c18 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -96,7 +96,7 @@
 
     .promo-text p {
       font-size: 0.88rem;
-      color: #9da8b3;
+      color: #5f5b54;
       line-height: 1.5;
       max-width: 480px;
     }
@@ -105,7 +105,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent 42%), linear-gradient(135deg, #ff1f1f, #9b0008);
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent 42%), linear-gradient(135deg, #d90429, #9b0008);
       color: #fff;
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
@@ -115,25 +115,24 @@
       border-radius: 8px;
       text-decoration: none;
       white-space: nowrap;
-      box-shadow: 0 0 24px rgba(255,31,31,0.36), inset 0 1px 0 rgba(255,255,255,0.24);
+      box-shadow: 0 10px 26px rgba(217,4,41,0.28), inset 0 1px 0 rgba(255,255,255,0.24);
       transition: transform 0.2s, box-shadow 0.2s;
       flex-shrink: 0;
     }
 
     .promo-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(255,31,31,0.54), inset 0 1px 0 rgba(255,255,255,0.34);
+      box-shadow: 0 14px 34px rgba(217,4,41,0.4), inset 0 1px 0 rgba(255,255,255,0.34);
     }
 
     .video-wrap {
       width: 100%;
       border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(255,31,31,0.32);
+      border: 1px solid rgba(217,4,41,0.28);
       box-shadow:
-        0 0 60px rgba(255,31,31,0.18),
-        0 0 30px rgba(64,196,99,0.1),
-        0 24px 60px rgba(0,0,0,0.6);
+        0 8px 24px rgba(217,4,41,0.12),
+        0 20px 48px rgba(31,28,24,0.18);
       aspect-ratio: 16 / 9;
     }
 
